@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Property-accessors : A mixin for declaring fancy property accessors" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Property-accessors</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/atom/property-accessors">View on GitHub</a>
+
+          <h1 id="project_title">Property-accessors</h1>
+          <h2 id="project_tagline">A mixin for declaring fancy property accessors</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/atom/property-accessors/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/atom/property-accessors/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="property-accessors" class="anchor" href="#property-accessors"><span class="octicon octicon-link"></span></a>Property Accessors</h1>
+
+<p>A mixin for defining fancy dynamic properties.</p>
+
+<h2>
+<a name="basic-usage" class="anchor" href="#basic-usage"><span class="octicon octicon-link"></span></a>Basic Usage</h2>
+
+<p>To define a basic property accessor, use the <code>accessor</code> declaration. If you've
+included the mixin into a class, you define a prototype property by calling
+<code>@::accessor</code> on its prototype.</p>
+
+<div class="highlight highlight-coffee"><pre><span class="nv">PropertyAccessors = </span><span class="nx">require</span> <span class="s">'property-accessors'</span>
+
+<span class="k">class</span> <span class="nx">Vehicle</span>
+  <span class="nx">PropertyAccessors</span><span class="p">.</span><span class="nx">includeInto</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+
+  <span class="nx">@</span><span class="o">::</span><span class="nx">accessor</span> <span class="s">'type'</span><span class="p">,</span> <span class="nf">-&gt;</span>
+    <span class="nv">get: </span><span class="nf">-&gt;</span>
+      <span class="k">switch</span> <span class="nx">@doorCount</span>
+        <span class="k">when</span> <span class="mi">4</span> <span class="k">then</span> <span class="s">'sedan'</span> <span class="c1"># i know this isn't strictly accurate</span>
+        <span class="k">when</span> <span class="mi">2</span> <span class="k">then</span> <span class="s">'coupe'</span>
+    <span class="nv">set: </span><span class="nf">(type) -&gt;</span>
+      <span class="k">switch</span> <span class="nx">type</span>
+        <span class="k">when</span> <span class="s">'sedan'</span> <span class="k">then</span> <span class="vi">@doorCount = </span><span class="mi">4</span>
+        <span class="k">when</span> <span class="s">'coupe'</span> <span class="k">then</span> <span class="vi">@doorCount = </span><span class="mi">2</span>
+
+<span class="nv">car = </span><span class="k">new</span> <span class="nx">Vehicle</span>
+<span class="nv">car.doorCount = </span><span class="mi">2</span>
+<span class="nx">car</span><span class="p">.</span><span class="nx">type</span> <span class="c1"># =&gt; 'coupe'</span>
+</pre></div>
+
+<p>You can define a class-level property by <em>extending</em> with the mixin rather than
+including it (which extends the prototype).</p>
+
+<div class="highlight highlight-coffee"><pre><span class="k">class</span> <span class="nx">Vehicle</span>
+  <span class="nx">PropertyAccessors</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+
+  <span class="nx">@accessor</span> <span class="s">'vehicleCount'</span><span class="p">,</span> <span class="nv">get: </span><span class="nf">-&gt;</span> <span class="nx">@allVehicles</span><span class="p">.</span><span class="nx">length</span>  
+</pre></div>
+
+<p>You can just pass a single function if you only want to define a getter:</p>
+
+<div class="highlight highlight-coffee"><pre><span class="k">class</span> <span class="nx">Vehicle</span>
+  <span class="nx">PropertyAccessors</span><span class="p">.</span><span class="nx">includeInto</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+
+  <span class="nx">@</span><span class="o">::</span><span class="nx">accessor</span> <span class="s">'type'</span><span class="p">,</span> <span class="nf">-&gt;</span> <span class="c1"># ...</span>
+</pre></div>
+
+<h2>
+<a name="fancy-usage" class="anchor" href="#fancy-usage"><span class="octicon octicon-link"></span></a>Fancy Usage</h2>
+
+<h3>
+<a name="lazy-accessors" class="anchor" href="#lazy-accessors"><span class="octicon octicon-link"></span></a>Lazy Accessors</h3>
+
+<p>Lazy accessors call a function the first time a property is accessed. You are
+still free to overwrite this value by assigning the property explicitly.</p>
+
+<div class="highlight highlight-coffee"><pre><span class="k">class</span> <span class="nx">ScienceLab</span>
+  <span class="nx">PropertyAccessors</span><span class="p">.</span><span class="nx">includeInto</span><span class="p">(</span><span class="k">this</span><span class="p">)</span>
+
+  <span class="nx">@</span><span class="o">::</span><span class="nx">lazyAccessor</span> <span class="s">'crazyComputation'</span><span class="p">,</span> <span class="nf">-&gt;</span> <span class="nx">computeCrazyComputation</span><span class="p">()</span>
+</pre></div>
+
+<h3>
+<a name="advised-accessors" class="anchor" href="#advised-accessors"><span class="octicon octicon-link"></span></a>Advised Accessors</h3>
+
+<p>Advised accessors allow you to call code before the reading or writing of a
+property value. If a property is being assigned, your advice function is called
+with the value being assigned and the old value.</p>
+
+<div class="highlight highlight-coffee"><pre><span class="k">class</span> <span class="nx">SpyStation</span>
+  <span class="nx">@advisedAccessor</span> <span class="s">'online'</span><span class="p">,</span>
+    <span class="nv">get: </span><span class="nf">-&gt;</span> <span class="nx">@ensureAllSystemsNominal</span><span class="p">()</span>
+    <span class="nv">set: </span><span class="nf">-&gt;</span> <span class="nx">@ensureUserIsSpy</span><span class="p">()</span>
+
+<span class="nv">station = </span><span class="k">new</span> <span class="nx">SpyStation</span>
+<span class="nv">station.online = </span><span class="kc">true</span> <span class="c1"># ensures user is a spy, then assigns true</span>
+<span class="nx">station</span><span class="p">.</span><span class="nx">online</span> <span class="c1"># ensures all systems are nominal, then returns true</span>
+</pre></div>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Property-accessors maintained by <a href="https://github.com/atom">atom</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
