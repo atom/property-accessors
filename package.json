@@ -4,7 +4,8 @@
   "description": "A mixin for declaring property accessors",
   "main": "lib/property-accessors",
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test",
+    "publish": "grunt"
   },
   "repository": {
     "type": "git",
