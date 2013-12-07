@@ -25,7 +25,7 @@
   "bugs": {
     "url": "https://github.com/atom/property-accessors/issues"
   },
-  "homepage": "https://github.com/atom/property-accessors",
+  "homepage": "http://atom.github.io/property-accessors/",
   "dependencies": {
     "mixto": "~0.3.0"
   },
