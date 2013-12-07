@@ -1,6 +1,6 @@
 {
   "name": "property-accessors",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A mixin for declaring property accessors",
   "main": "lib/property-accessors",
   "scripts": {
