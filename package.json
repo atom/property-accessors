@@ -28,7 +28,7 @@
   },
   "homepage": "http://atom.github.io/property-accessors/",
   "dependencies": {
-    "mixto": "~0.3.0"
+    "mixto": "1.x"
   },
   "devDependencies": {
     "coffee-script": "~1.6.3",
