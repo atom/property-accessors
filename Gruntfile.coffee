@@ -30,6 +30,12 @@ module.exports = (grunt) ->
           stdout: true
           stderr: true
           failOnError: true
+      testfallback:
+        command: 'node node_modules/.bin/jasmine-focused --coffee --captureExceptions spec'
+        options:
+          stdout: true
+          stderr: true
+          failOnError: true
 
   grunt.loadNpmTasks('grunt-contrib-coffee')
   grunt.loadNpmTasks('grunt-shell')
@@ -38,4 +44,4 @@ module.exports = (grunt) ->
   grunt.registerTask 'clean', -> require('rimraf').sync('lib')
   grunt.registerTask('lint', ['coffeelint'])
   grunt.registerTask('default', ['coffee', 'lint'])
-  grunt.registerTask('test', ['coffee', 'lint', 'shell:test'])
+  grunt.registerTask('test', ['coffee', 'lint', 'shell:test', 'shell:testfallback'])

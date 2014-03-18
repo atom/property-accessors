@@ -1,4 +1,5 @@
 Mixin = require 'mixto'
+WeakMap = global.WeakMap ? require('harmony-collections').WeakMap
 
 module.exports =
 class PropertyAccessors extends Mixin

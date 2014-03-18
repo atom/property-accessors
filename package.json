@@ -28,7 +28,8 @@
   },
   "homepage": "http://atom.github.io/property-accessors/",
   "dependencies": {
-    "mixto": "1.x"
+    "mixto": "1.x",
+    "harmony-collections": "git+https://github.com/Benvie/harmony-collections.git#e02bb492c275753cbee66a05b002cd57db3d80a7"
   },
   "devDependencies": {
     "jasmine-focused": "1.x",
