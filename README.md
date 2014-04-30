@@ -1,4 +1,4 @@
-# Property Accessors Mixin [![Build Status](https://travis-ci.org/atom/property-accessors?branch=master)](https://travis-ci.org/atom/property-accessors)
+# Property Accessors Mixin [![Build Status](https://travis-ci.org/atom/property-accessors.svg?branch=master)](https://travis-ci.org/atom/property-accessors)
 
 A mixin for defining dynamic properties.
 
