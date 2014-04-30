@@ -1,4 +1,4 @@
-# Property Accessors Mixin
+# Property Accessors Mixin [![Build Status](https://travis-ci.org/atom/property-accessors?branch=master)](https://travis-ci.org/atom/property-accessors)
 
 A mixin for defining dynamic properties.
 
@@ -13,7 +13,7 @@ PropertyAccessors = require 'property-accessors'
 
 class Vehicle
   PropertyAccessors.includeInto(this)
-  
+
   @::accessor 'type', ->
     get: ->
       switch @doorCount
@@ -35,7 +35,7 @@ including it (which extends the prototype).
 ```coffee
 class Vehicle
   PropertyAccessors.extend(this)
-  
+
   @accessor 'vehicleCount', get: -> @allVehicles.length  
 ```
 
@@ -44,7 +44,7 @@ You can just pass a single function if you only want to define a getter:
 ```coffee
 class Vehicle
   PropertyAccessors.includeInto(this)
-  
+
   @::accessor 'type', -> # ...
 ```
 
@@ -58,7 +58,7 @@ still free to overwrite this value by assigning the property explicitly.
 ```coffee
 class ScienceLab
   PropertyAccessors.includeInto(this)
-  
+
   @::lazyAccessor 'crazyComputation', -> computeCrazyComputation()
 ```
 
