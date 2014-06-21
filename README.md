@@ -14,7 +14,7 @@ PropertyAccessors = require 'property-accessors'
 class Vehicle
   PropertyAccessors.includeInto(this)
 
-  @::accessor 'type', ->
+  @::accessor 'type',
     get: ->
       switch @doorCount
         when 4 then 'sedan' # i know this isn't strictly accurate
