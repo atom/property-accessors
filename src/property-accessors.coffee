@@ -1,5 +1,5 @@
 Mixin = require 'mixto'
-WeakMap = require 'es6-weak-map'
+WeakMap = global.WeakMap ? require 'es6-weak-map'
 
 module.exports =
 class PropertyAccessors extends Mixin
