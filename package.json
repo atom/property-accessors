@@ -20,7 +20,7 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "http://github.com/atom/telepath/raw/master/LICENSE.md"
+      "url": "http://github.com/atom/property-accessors/raw/master/LICENSE.md"
     }
   ],
   "bugs": {
@@ -28,8 +28,7 @@
   },
   "homepage": "http://atom.github.io/property-accessors/",
   "dependencies": {
-    "mixto": "1.x",
-    "es6-weak-map": "^0.1.2"
+    "mixto": "1.x"
   },
   "devDependencies": {
     "jasmine-focused": "1.x",
@@ -38,6 +37,6 @@
     "grunt": "~0.4.1",
     "grunt-shell": "~0.2.2",
     "grunt-coffeelint": "0.0.6",
-    "rimraf": "~2.2.2"
+    "rimraf": "~2.5.2"
   }
 }

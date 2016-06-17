@@ -1,12 +1,13 @@
-# Property Accessors Mixin [![Build Status](https://travis-ci.org/atom/property-accessors.svg?branch=master)](https://travis-ci.org/atom/property-accessors)
+# Property Accessors Mixin
+[![OS X Build Status](https://travis-ci.org/atom/property-accessors.svg?branch=master)](https://travis-ci.org/atom/property-accessors)
+[![Windows Build Status](https://ci.appveyor.com/api/projects/status/ww4d10hi4v5h7kbp/branch/master?svg=true)](https://ci.appveyor.com/project/Atom/property-accessors/branch/master)
+[![Dependency Status](https://david-dm.org/atom/property-accessors.svg)](https://david-dm.org/atom/property-accessors)
 
 A mixin for defining dynamic properties.
 
 ## Basic Usage
 
-To define a basic property accessor, use the `accessor` declaration. If you've
-included the mixin into a class, you define a prototype property by calling
-`@::accessor` on its prototype.
+To define a basic property accessor, use the `accessor` declaration. If you've included the mixin into a class, you define a prototype property by calling `@::accessor` on its prototype.
 
 ```coffee
 PropertyAccessors = require 'property-accessors'
@@ -29,8 +30,7 @@ car.doorCount = 2
 car.type # => 'coupe'
 ```
 
-You can define a class-level property by *extending* with the mixin rather than
-including it (which extends the prototype).
+You can define a class-level property by *extending* with the mixin rather than including it (which extends the prototype).
 
 ```coffee
 class Vehicle
@@ -52,8 +52,7 @@ class Vehicle
 
 ### Lazy Accessors
 
-Lazy accessors call a function the first time a property is accessed. You are
-still free to overwrite this value by assigning the property explicitly.
+Lazy accessors call a function the first time a property is accessed. You are still free to overwrite this value by assigning the property explicitly.
 
 ```coffee
 class ScienceLab
@@ -64,9 +63,7 @@ class ScienceLab
 
 ### Advised Accessors
 
-Advised accessors allow you to call code before the reading or writing of a
-property value. If a property is being assigned, your advice function is called
-with the value being assigned and the old value.
+Advised accessors allow you to call code before the reading or writing of a property value. If a property is being assigned, your advice function is called with the value being assigned and the old value.
 
 ```coffee
 class SpyStation
