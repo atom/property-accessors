@@ -1,4 +1,5 @@
-# Property Accessors Mixin
+##### Atom and all repositories under Atom will be archived on December 15, 2022. Learn more in our [official announcement](https://github.blog/2022-06-08-sunsetting-atom/)
+ # Property Accessors Mixin
 [![OS X Build Status](https://travis-ci.org/atom/property-accessors.svg?branch=master)](https://travis-ci.org/atom/property-accessors)
 [![Windows Build Status](https://ci.appveyor.com/api/projects/status/ww4d10hi4v5h7kbp/branch/master?svg=true)](https://ci.appveyor.com/project/Atom/property-accessors/branch/master)
 [![Dependency Status](https://david-dm.org/atom/property-accessors.svg)](https://david-dm.org/atom/property-accessors)
